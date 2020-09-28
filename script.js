@@ -1,5 +1,19 @@
-const imgs = document.querySelectorAll('img');
+const tabMenu = document.querySelectorAll('.js-tabmenu li');
+const tabContent = document.querySelectorAll('.js-tabcontent section');
 
-imgs.forEach(function(item){
-    console.log(item)
-});
+if(tabMenu.length && tabContent.length) {
+  tabContent[0].classList.add('ativo');
+
+  function activeTab(index) {
+    tabContent.forEach((section) => {
+      section.classList.remove('ativo');
+    });
+    tabContent[index].classList.add('ativo');
+  }
+
+  tabMenu.forEach((itemMenu, index) => {
+    itemMenu.addEventListener('click', () => {
+      activeTab(index);
+    });
+  });
+}
